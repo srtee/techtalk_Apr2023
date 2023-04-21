@@ -227,7 +227,7 @@ lammps->input->file();
 delete lammps;
 ```
 
-# Challenges: _Can_ Academics Learn To Code?
+# Challenges and the Future
 
 ## Successes ...
 
@@ -241,7 +241,6 @@ User had an idea for a complicated compute to be used in evaluating a potential,
 
 ![](scr_failure.png)
 
+## The Future: LAMMPS as a Coding Community?
 
-
-# The Future: LAMMPS as a Coding Community
-
+![](Community.jpg)
