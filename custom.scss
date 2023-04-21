@@ -1,0 +1,28 @@
+/*-- scss:defaults --*/
+
+@import url(./fonts/roboto/roboto.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,400;1,700);
+
+// headings
+$presentation-heading-font: "Roboto", sans-serif !default;
+$presentation-h1-font-size: 2em !default;
+$presentation-h2-font-size: 1.3em !default;
+
+/*-- scss:rules --*/
+.reveal .slide-logo {
+    height: 100px !important;
+    max-height: unset !important;
+    max-width: unset !important;
+}
+
+.reveal .quarto-title-block .slide-logo {
+    display: none;
+}
+
+.reveal .smaller {
+    font-size: smaller;
+}
+
+.reveal .tightlist li:not(:last-child) {
+    margin-bottom: -10px !important;
+}

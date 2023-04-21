@@ -1,0 +1,247 @@
+---
+title: "Getting Academics Coding in LAMMPS"
+subtitle: "The Good, The Bad, and The User Journey"
+author: "Shern Ren Tee"
+format:
+  revealjs:
+    toc: true
+    toc-depth: 1
+    logo: logo_inv.png
+    theme: [default, custom.scss]
+    slide-number: true
+    code-line-numbers: false
+title-slide-attributes:
+  data-background-color: black
+  data-background-image: tt_title_bg.png
+  data-background-size: contain
+---
+
+# Introduction: LAMMPS as a Community MD Code
+
+## Molecular Dynamics: Bigger...
+
+## Molecular Dynamics: ... and weirder
+
+## A Case Study: ELECTRODE for Conductive Molecular Dynamics
+
+## Method Development Cycle in Molecular Dynamics
+
+* Implementation
+* Benchmarking
+* Documentation
+* Distribution
+
+::: {.notes}
+* Implementation: theory, algorithms, code
+* Benchmarking: measuring performance or accuracy gains
+* Documentation: setting up user interfaces
+* Distribution: getting code onto people's machines and HPCs
+:::
+
+## LAMMPS's successes
+
+Code originally 
+
+LAMMPS has been a great _community code_ platform for method development!
+
+* A large community: 20-30k user downloads per year
+  * 50k LOC (2004) to 1 million LOC (2023 -- several hundred contributors)
+
+
+# Lessons: ASAP and AMAP
+
+## Lessons Learned from Developing LAMMPS [Plimpton 2019]
+
+> **ASAP**: Make your code _as simple as possible_ to understand and extend
+>
+> **AMAP**: Enable it to be used in _as many as possible_ ways
+>
+> **Licensing**: LGPL can be a good compromise
+
+::: {.notes}
+* GPL: derivative works must also be open sourced
+* _LGPL: use-by-linking is not considered derivative_
+* BSD: "do whatever" (good for companies, bad for OSS devs)
+:::
+
+## ASAP and AMAP in LAMMPS
+
+* Drop a `.cpp` and `.h` into `lammps/src` and compile, and you get an add-on!
+* LAMMPS can be called as a library:
+  * Interfaces: C-style, Python, SWIG
+  * Internally-implemented `fix external`
+  * Caller can start multiple LAMMPS instances and coordinate messages between them
+
+## ASAP 1: Simple, Clear Coding
+
+LAMMPS uses "C with classes":
+
+* Very little overloading, templating, STL (slowly increasing)
+* Low-level structs and kernels are C-style (e.g. n-dim arrays)
+* Detailed comments wherever needed
+
+## ASAP 2-4: Straightforward extensibility
+
+::: {.columns}
+
+:::: {.column width=50% .smaller .tightlist}
+
+What do you think this code does?
+
+::::
+
+:::: {.column width=50% .smaller}
+{{< include _fix_jumble.qmd >}}
+::::
+
+:::
+
+## ASAP 2: Robust core, clear "sockets"
+
+::: {.columns}
+
+:::: {.column width=50% .smaller .tightlist}
+**Timestep loop:**
+
+* timestep initialization
+* `fix->initial()`
+* (sometimes) rebuild neighbor list 
+* or send ghost atoms
+* force initialization
+* `fix->pre_force()`
+* compute forces
+* `fix->pre_reverse()`
+* receive ghost forces
+* `fix->post_force()`
+* finalize and output
+
+::::
+
+:::: {.column width=50% .smaller}
+{{< include _fix_jumble.qmd >}}
+::::
+
+:::
+
+## ASAP 3: Good parenting, easy children
+
+::: {.columns}
+
+:::: {.column width=50% .smaller .tightlist}
+
+Parent "styles" define interfaces:
+
+* `pair` for MD potentials
+* `compute` for diagnostics (temperature, pressure)
+* `fix` for doing _anything_
+
+Children styles inherit interface from parents; just `override` specific parent virtual functions as needed
+
+::::
+
+:::: {.column width=50% .smaller .tightlist}
+{{< include _fix_jumble.qmd >}}
+::::
+
+:::
+
+## ASAP 3: Parenting Pointers
+
+::: {.columns}
+
+:::: {.column width=50% .smaller .tightlist}
+
+`Pointers` class makes shared data "quasi-static":
+
+```{.cpp filename="pointers.h"}
+class Pointers {
+ protected:
+  LAMMPS *lmp;     // ...
+  Atom *&atom;     // ...
+
+ public:
+  Pointers(LAMMPS *ptr) :
+   lmp(ptr),       // ...
+   atom(ptr->atom),// ...
+}
+```
+
+Now anything inheriting `Pointers` auto-gets references to the necessary data contained in `lmp`!
+
+::::
+
+:::: {.column width=50% .smaller .tightlist}
+{{< include _fix_jumble.qmd >}}
+::::
+
+:::
+
+## ASAP 4: Style Factories
+
+::: {.columns}
+
+:::: {.column width=50% .smaller .tightlist}
+
+Factory pattern creates a derived `FixJumble` and returns a `Fix` pointer to LAMMPS:
+
+```{.cpp filename="modify.cpp"}
+// ...
+#define FIX_CLASS
+
+#define FixStyle(_key, _Class)
+   (*fix_map)[#_key] 
+     = &style_creator<Fix, _Class>;
+
+// C/Make'd list of fixes
+#include "style_fix.h" // IWYU pragma: keep
+#undef FixStyle
+#undef FIX_CLASS
+// ...
+```
+
+```{.cpp filename="fix_jumble.h"}
+// ...
+#ifdef FIX_CLASS
+FixStyle(jumble,FixJumble);
+#else
+// ...
+```
+
+::::
+
+:::: {.column width=50% .smaller .tightlist}
+{{< include _fix_jumble.qmd >}}
+::::
+
+:::
+
+## AMAP: Making LAMMPS a Library
+
+* `LAMMPS_NS` namespace prevents code collisions
+* Global (static) variables replaced with `Pointer` class
+* `MPI_COMM_WORLD` replaced with communicator used to initialize LAMMPS
+
+```{.cpp filename="main.cpp"}
+LAMMPS *lammps = new LAMMPS(argc, argv, lammps_comm);
+lammps->input->file();
+delete lammps;
+```
+
+# Challenges: _Can_ Academics Learn To Code?
+
+## Successes ...
+
+User almost completely modified code on their own, made a suitable test, and was just missing some technical details on atom indexing in LAMMPS:
+
+![](scr_success.png)
+
+## ... and Failures
+
+User had an idea for a complicated compute to be used in evaluating a potential, and was asking basic and strange questions _a year after his original post_:
+
+![](scr_failure.png)
+
+
+
+# The Future: LAMMPS as a Coding Community
+

@@ -1,0 +1,19 @@
+
+## Six Lessons for a Community Code
+
+1. Make something people want
+2. The perfect is the enemy of the good
+3. **Make it easy for others to understand, modify, and extend your code**
+4. Choose an appropriate license
+5. **Support your users**
+6. Choose an appropriate name for your software
+
+::: {.notes}
+1. Meet community needs; especially crucial en route to commercialization / sustainability
+2. Avoid delaying releases based on technical challenges that few users will notice or care about!
+3. Build a robust core and sensible interface; main software engineering challenge and focus of this talk
+4. Open-sourcing helps people easily modify and distribute code
+(may limit commercialization opportunities and thus sustainability!)
+5. Create a user group: last part of talk
+6. Surprisingly relevant! Names should be pronounceable, but easily searchable i.e. _avoid reusing common nouns!_
+:::
