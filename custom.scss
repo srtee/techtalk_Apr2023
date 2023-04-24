@@ -13,9 +13,9 @@ $presentation-font-size-root: 30px !default;
 
 /*-- scss:rules --*/
 .reveal .slide-logo {
-    height: 100px !important;
+    height: 70px !important;
     max-height: unset !important;
-    max-width: unset !important;
+    max-width: 50vw !important;
 }
 
 .reveal .quarto-title-block .slide-logo {
