@@ -15,7 +15,6 @@ format:
     theme: [default, custom.scss]
     slide-number: true
     code-line-numbers: false
-    include-after-body: clean_title_page.html
 title-slide-attributes:
   data-background-color: black
   data-background-image: tt_title_bg.png
