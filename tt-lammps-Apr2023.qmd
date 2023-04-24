@@ -65,7 +65,7 @@ title-slide-attributes:
 
 :::
 
-... modelled using molecular dynamics! [@pandemics2021]
+A virtual pandemic with realistic geography and temporal mobility, modelled using molecular dynamics! [@pandemics2021]
 
 ## A Case Study: ELECTRODE for Conductive Molecular Dynamics
 
