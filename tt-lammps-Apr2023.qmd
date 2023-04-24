@@ -1,7 +1,12 @@
 ---
 title: "Getting Academics Coding in LAMMPS"
-subtitle: "The Good, The Bad, and The User Journey"
+subtitle: "Unofficial Thoughts on the Good, the Bad, and the Way Forward"
 author: "Shern Ren Tee"
+institute: "AIBN and CTCMS, University of Queensland \n s.tee@uq.edu.au"
+date: 26 April 2023
+date-format: "D MMM YYYY"
+bibliography: refs.bib
+footer: "DOI: 10.5281/zenodo.7857573"
 format:
   revealjs:
     toc: true
@@ -17,13 +22,70 @@ title-slide-attributes:
   data-background-size: contain
 ---
 
+## About Me
+
+![I did (PhD) weird DNA simulations, (2019-2020) weird protein simulations, and (2021-now) weird electrode-electrolyte simulations. Spot the pattern! Find out more at my (very poorly maintained) [website](https://srtee.github.io).](my_work.png)
+
 # Introduction: LAMMPS as a Community MD Code
 
-## Molecular Dynamics: Bigger...
+## Molecular Dynamics Today: Bigger...
 
-## Molecular Dynamics: ... and weirder
+::: {.columns}
+
+:::: {.column width=50%}
+
+![[@alder1959] Molecular dynamics in 1959 ...](alder1959.png){height="450px"}
+
+::::
+
+:::: {.column width=50%}
+
+![[@science2020] ... and today! (4.1 million atoms, 2.5 microseconds!)](science2020.png){height="450px"}
+
+::::
+
+:::
+
+
+## Molecular Dynamics Today: ... and weirder
+
+::: {.columns .centercaption}
+
+:::: {.column width=35%}
+
+![A digital model of Birmingham](rspa20200653f18.jpg){height="380px"}
+
+::::
+
+:::: {.column width=65%}
+
+![Comparison between real data and model output](rspa20200653f21.jpg){height="380px"}
+
+::::
+
+:::
+
+... modelled using molecular dynamics! [@pandemics2021]
 
 ## A Case Study: ELECTRODE for Conductive Molecular Dynamics
+
+::: {.columns .centercaption}
+
+:::: {.column width=45%}
+
+![Capacitor modelling with dynamically-responsive charges using the USER-CONP2 package [@user-conp2]](electrode.jpeg){width="40vw"}
+
+::::
+
+:::: {.column width=45%}
+
+![Calculating the capacitance of molecular nanotubes against theory using the ELECTRODE package [@electrodepkg]](nanotubes.jpeg){width="40vw"}
+
+::::
+
+:::
+
+Conductive electrode molecular dynamics is implemented in other packages (GROMACS, OpenMM, MetalWalls, ...) but so far only the LAMMPS packages are being widely used outside their developing group!
 
 ## Method Development Cycle in Molecular Dynamics
 
@@ -32,6 +94,8 @@ title-slide-attributes:
 * Documentation
 * Distribution
 
+LAMMPS is a great _community code_ for this cycle!
+
 ::: {.notes}
 * Implementation: theory, algorithms, code
 * Benchmarking: measuring performance or accuracy gains
@@ -39,25 +103,32 @@ title-slide-attributes:
 * Distribution: getting code onto people's machines and HPCs
 :::
 
-## LAMMPS's successes
+## A Brief LAMMPS History [@thompson2022]
 
-Code originally 
+* Mid-1990s: 
+  * Collab (two US DoE labs and three companies)
+  * free Fortran code with license agreement
+  * 10 years ... 100 downloads
 
-LAMMPS has been a great _community code_ platform for method development!
+* 2004:
+  * C++ GPL code, 50k lines of code
+  * downloaded more times in first month than in previous ten years
 
-* A large community: 20-30k user downloads per year
-  * 50k LOC (2004) to 1 million LOC (2023 -- several hundred contributors)
-
+* Today:
+  * 1 million lines of code, several hundred contributors
+  * 20-30k downloads per year
 
 # Lessons: ASAP and AMAP
 
-## Lessons Learned from Developing LAMMPS [Plimpton 2019]
+## Lessons Learned from LAMMPS [@plimpton2019lessons]
 
 > **ASAP**: Make your code _as simple as possible_ to understand and extend
 >
 > **AMAP**: Enable it to be used in _as many as possible_ ways
 >
 > **Licensing**: LGPL can be a good compromise
+
+See also: [@lammpscommcode]
 
 ::: {.notes}
 * GPL: derivative works must also be open sourced
@@ -72,6 +143,30 @@ LAMMPS has been a great _community code_ platform for method development!
   * Interfaces: C-style, Python, SWIG
   * Internally-implemented `fix external`
   * Caller can start multiple LAMMPS instances and coordinate messages between them
+
+## AMAP: LAMMPS Inputs As Workflows
+
+::: {.columns}
+
+:::: {.column width=40% .smaller}
+
+Other packages: "turn these dials"
+
+LAMMPS: "put these dials on your system and turn them"
+
+(For example, a script won't run any steps without `run` and won't move any atoms without an integrator like `fix nvt`!)
+
+Resembles "fluent interface" philosophy
+
+::::
+
+:::: {.column width=60% .smaller}
+
+{{< include in.peptide >}}
+
+::::
+
+:::
 
 ## ASAP 1: Simple, Clear Coding
 
@@ -228,6 +323,8 @@ lammps->input->file();
 delete lammps;
 ```
 
+
+
 # Challenges and the Future
 
 ## Successes ...
@@ -242,6 +339,34 @@ User had an idea for a complicated compute to be used in evaluating a potential,
 
 ![](scr_failure.png)
 
+## Deep Thought: Programming as Theory-Building
+
+> Programming isn't about writing the code; it's about **understanding the problem and expressing that understanding through code**.
+>
+> ... Why does having a theory of the program matter? Because this enables rapid and effective modification of the program to respond to changing requirements without piling up technical debt or hacks.
+
+![Diagram of "neighbor-listing", a fundamental molecular dynamics operation and a frequent confuser of LAMMPS coders, from [@thompson2022]](neighlisting.jpg)
+
 ## The Future: LAMMPS as a Coding Community?
 
-![](Community.jpg)
+![If LAMMPS is a _program_ and not just code, then its continued survival and growth relies on introducing people to _the theory of the program_ of molecular dynamics in LAMMPS!](Community.jpg)
+
+::: {.x-small}
+
+{{< include _scriberia.qmd >}}
+
+:::
+
+## Acknowledgements
+
+::: {layout="[24,12,10]"}
+
+![Prof Debra Bernhardt and the Bernhardt Group](Bernhardt_Group.jpeg)
+
+![The Turing Way](LogoDetailWithText.jpg)
+
+![Research Software Engineers Au-NZ](RSE_AUNZ_logo.png)
+
+:::
+
+## References

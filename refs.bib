@@ -1,6 +1,6 @@
 @techreport{plimpton2019lessons,
   title={Lessons Learned from Developing LAMMPS.},
-  author={Plimpton, Steven J},
+  author={Plimpton, Steven J.},
   year={2019},
   howpublished = {\url{https://www.osti.gov/servlets/purl/1639472}},
   institution={Sandia National Lab.(SNL-NM), Albuquerque, NM (United States)}
@@ -30,4 +30,97 @@ abstract = {For this article, we call scientific software a community code if it
   pages={205--211},
   year={2010},
   publisher={Springer}
+}
+
+@article{thompson2022,
+title = {LAMMPS - a flexible simulation tool for particle-based materials modeling at the atomic, meso, and continuum scales},
+journal = {Computer Physics Communications},
+volume = {271},
+pages = {108171},
+year = {2022},
+issn = {0010-4655},
+doi = {https://doi.org/10.1016/j.cpc.2021.108171},
+url = {https://www.sciencedirect.com/science/article/pii/S0010465521002836},
+author = {Aidan P. Thompson and H. Metin Aktulga and Richard Berger and Dan S. Bolintineanu and W. Michael Brown and Paul S. Crozier and Pieter J. {in 't Veld} and Axel Kohlmeyer and Stan G. Moore and Trung Dac Nguyen and Ray Shan and Mark J. Stevens and Julien Tranchida and Christian Trott and Steven J. Plimpton},
+keywords = {Molecular dynamics, Materials modeling, Parallel algorithms, LAMMPS},
+abstract = {Since the classical molecular dynamics simulator LAMMPS was released as an open source code in 2004, it has become a widely-used tool for particle-based modeling of materials at length scales ranging from atomic to mesoscale to continuum. Reasons for its popularity are that it provides a wide variety of particle interaction models for different materials, that it runs on any platform from a single CPU core to the largest supercomputers with accelerators, and that it gives users control over simulation details, either via the input script or by adding code for new interatomic potentials, constraints, diagnostics, or other features needed for their models. As a result, hundreds of people have contributed new capabilities to LAMMPS and it has grown from fifty thousand lines of code in 2004 to a million lines today. In this paper several of the fundamental algorithms used in LAMMPS are described along with the design strategies which have made it flexible for both users and developers. We also highlight some capabilities recently added to the code which were enabled by this flexibility, including dynamic load balancing, on-the-fly visualization, magnetic spin dynamics models, and quantum-accuracy machine learning interatomic potentials.
+Program Summary
+Program Title: Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) CPC Library link to program files: https://doi.org/10.17632/cxbxs9btsv.1 Developer's repository link: https://github.com/lammps/lammps Licensing provisions: GPLv2 Programming language: C++, Python, C, Fortran Supplementary material: https://www.lammps.org Nature of problem: Many science applications in physics, chemistry, materials science, and related fields require parallel, scalable, and efficient generation of long, stable classical particle dynamics trajectories. Within this common problem definition, there lies a great diversity of use cases, distinguished by different particle interaction models, external constraints, as well as timescales and lengthscales ranging from atomic to mesoscale to macroscopic. Solution method: The LAMMPS code uses parallel spatial decomposition, distributed neighbor lists, and parallel FFTs for long-range Coulombic interactions [1]. The time integration algorithm is based on the Størmer-Verlet symplectic integrator [2], which provides better stability than higher-order non-symplectic methods. In addition, LAMMPS supports a wide range of interatomic potentials, constraints, diagnostics, software interfaces, and pre- and post-processing features. Additional comments including restrictions and unusual features: This paper serves as the definitive reference for the LAMMPS code.
+References
+[1]S. Plimpton, Fast parallel algorithms for short-range molecular dynamics. J. Comp. Phys. 117 (1995) 1–19.[2]L. Verlet, Computer experiments on classical fluids: I. Thermodynamical properties of Lennard–Jones molecules, Phys. Rev. 159 (1967) 98–103.}
+}
+
+@article{alder1959,
+    author = {Alder, B. J. and Wainwright, T. E.},
+    title = "{Studies in Molecular Dynamics. I. General Method}",
+    journal = {The Journal of Chemical Physics},
+    volume = {31},
+    number = {2},
+    pages = {459-466},
+    year = {1959},
+    month = {08},
+    abstract = "{A method is outlined by which it is possible to calculate exactly the behavior of several hundred interacting classical particles. The study of this many‐body problem is carried out by an electronic computer which solves numerically the simultaneous equations of motion. The limitations of this numerical scheme are enumerated and the important steps in making the program efficient on the computers are indicated. The applicability of this method to the solution of many problems in both equilibrium and nonequilibrium statistical mechanics is discussed.}",
+    issn = {0021-9606},
+    doi = {10.1063/1.1730376},
+    url = {https://doi.org/10.1063/1.1730376},
+    eprint = {https://pubs.aip.org/aip/jcp/article-pdf/31/2/459/8123930/459\_1\_online.pdf},
+}
+
+@article{
+science2020,
+author = {Beata Turoňová  and Mateusz Sikora  and Christoph Schürmann  and Wim J. H. Hagen  and Sonja Welsch  and Florian E. C. Blanc  and Sören von Bülow  and Michael Gecht  and Katrin Bagola  and Cindy Hörner  and Ger van Zandbergen  and Jonathan Landry  and Nayara Trevisan Doimo de Azevedo  and Shyamal Mosalaganti  and Andre Schwarz  and Roberto Covino  and Michael D. Mühlebach  and Gerhard Hummer  and Jacomine Krijnse Locker  and Martin Beck },
+title = {In situ structural analysis of SARS-CoV-2 spike reveals flexibility mediated by three hinges},
+journal = {Science},
+volume = {370},
+number = {6513},
+pages = {203-208},
+year = {2020},
+doi = {10.1126/science.abd5223},
+URL = {https://www.science.org/doi/abs/10.1126/science.abd5223},
+eprint = {https://www.science.org/doi/pdf/10.1126/science.abd5223},
+abstract = {The severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) spike protein enables viral entry into host cells by binding to the angiotensin-converting enzyme 2 (ACE2) receptor and is a major target for neutralizing antibodies. About 20 to 40 spikes decorate the surface of virions. Turoňová et al. now show that the spike is flexibly connected to the viral surface by three hinges that are well protected by glycosylation sites. The flexibility imparted by these hinges may explain how multiple spikes act in concert to engage onto the flat surface of a host cell. Science, this issue p. 203 Flexible hinges shielded by glycans in the coronavirus spike protein may allow scanning of the host cell surface. The spike protein (S) of severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) is required for cell entry and is the primary focus for vaccine development. In this study, we combined cryo–electron tomography, subtomogram averaging, and molecular dynamics simulations to structurally analyze S in situ. Compared with the recombinant S, the viral S was more heavily glycosylated and occurred mostly in the closed prefusion conformation. We show that the stalk domain of S contains three hinges, giving the head unexpected orientational freedom. We propose that the hinges allow S to scan the host cell surface, shielded from antibodies by an extensive glycan coat. The structure of native S contributes to our understanding of SARS-CoV-2 infection and potentially to the development of safe vaccines.}
+}
+
+@article{pandemics2021,
+author = {Alexiadis, A.  and Albano, A.  and Rahmat, A.  and Yildiz, M.  and Kefal, A.  and Ozbulut, M.  and Bakirci, N.  and Garzón-Alvarado, D. A.  and Duque-Daza, C. A.  and Eslava-Schmalbach, J. H. },
+title = {Simulation of pandemics in real cities: enhanced and accurate digital laboratories},
+journal = {Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences},
+volume = {477},
+number = {2245},
+pages = {20200653},
+year = {2021},
+doi = {10.1098/rspa.2020.0653},
+
+URL = {https://royalsocietypublishing.org/doi/abs/10.1098/rspa.2020.0653},
+eprint = {https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.2020.0653}
+,
+    abstract = { This study develops a modelling framework for simulating the spread of infectious diseases within real cities. Digital copies of Birmingham (UK) and Bogotá (Colombia) are generated, reproducing their urban environment, infrastructure and population. The digital inhabitants have the same statistical features of the real population. Their motion is a combination of predictable trips (commute to work, school, etc.) and random walks (shopping, leisure, etc.). Millions of individuals, their encounters and the spread of the disease are simulated by means of high-performance computing and massively parallel algorithms for several months and a time resolution of 1 minute. Simulations accurately reproduce the COVID-19 data for Birmingham and Bogotá both before and during the lockdown. The model has only one adjustable parameter calculable in the early stages of the pandemic. Policymakers can use our digital cities as virtual laboratories for testing, predicting and comparing the effects of policies aimed at containing epidemics. }
+}
+
+@incollection{user-conp2,
+    author = {Tee, Shern Ren},
+    isbn = {978-0-7354-2234-6},
+    title = "{Theory and Practice in Constant Potential Molecular Dynamics Simulations}",
+    booktitle = "{Multiscale Modeling of Electrochemical Reactions and Processes}",
+    publisher = {AIP Publishing LLC},
+    doi = {10.1063/9780735422377_004},
+    url = {https://doi.org/10.1063/9780735422377\_004},
+    eprint = {https://pubs.aip.org/book/chapter-pdf/9012614/9780735422377\_004.pdf},
+    year= {2021}
+}
+
+@article{electrodepkg,
+    author = {Ahrens-Iwers, Ludwig J. V. and Janssen, Mathijs and Tee, Shern R. and Meißner, Robert H.},
+    title = "{ELECTRODE: An electrochemistry package for atomistic simulations}",
+    journal = {The Journal of Chemical Physics},
+    volume = {157},
+    number = {8},
+    year = {2022},
+    month = {08},
+    abstract = "{Constant potential methods (CPMs) enable computationally efficient simulations of the solid–liquid interface at conducting electrodes in molecular dynamics. They have been successfully used, for example, to realistically model the behavior of ionic liquids or water-in-salt electrolytes in supercapacitors and batteries. CPMs model conductive electrodes by updating charges of individual electrode atoms according to the applied electric potential and the (time-dependent) local electrolyte structure. Here, we present a feature-rich CPM implementation, called ELECTRODE, for the Large-scale Atomic/Molecular Massively Parallel Simulator, which includes a constrained charge method and a thermo-potentiostat. The ELECTRODE package also contains a finite-field approach, multiple corrections for nonperiodic boundary conditions of the particle–particle particle–mesh solver, and a Thomas–Fermi model for using nonideal metals as electrodes. We demonstrate the capabilities of this implementation for a parallel-plate electrical double-layer capacitor, for which we have investigated the charging times with the different implemented methods and found an interesting relationship between water and ionic dipole relaxations. To prove the validity of the one-dimensional correction for the long-range electrostatics, we estimated the vacuum capacitance of two coaxial carbon nanotubes and compared it to structureless cylinders, for which an analytical expression exists. In summary, the ELECTRODE package enables efficient electrochemical simulations using state-of-the-art methods, allowing one to simulate even heterogeneous electrodes. Moreover, it allows unveiling more rigorously how electrode curvature affects the capacitance with the one-dimensional correction.}",
+    issn = {0021-9606},
+    doi = {10.1063/5.0099239},
+    url = {https://doi.org/10.1063/5.0099239},
+    note = {084801},
+    eprint = {https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/5.0099239/16552679/084801\_1\_online.pdf},
 }
