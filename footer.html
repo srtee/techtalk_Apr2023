@@ -1,0 +1,19 @@
+<script type="text/javascript">
+const footer = document.createElement('footer');
+footer.textContent = 'DOI: 10.5281/zenodo.7857573'
+Object.assign( footer.style, {
+  position: 'absolute',
+  bottom: '20.5px',
+  left: '0',
+  width: '100%',
+  color: 'var(--quarto-text-muted)',
+  textAlign: 'center',
+  fontSize: '18px'
+} );
+
+Reveal.on('pdf-ready', () => {
+  document.querySelectorAll('.pdf-page').forEach(page => {
+    page.appendChild(footer.cloneNode(true));
+  });
+})
+</script>

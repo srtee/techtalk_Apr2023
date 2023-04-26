@@ -38,18 +38,38 @@ $presentation-font-size-root: 30px !default;
   text-align: center !important;
 }
 
+.reveal .slide-number {
+  top: 20px !important;
+}
+
+.reveal .footer {
+  position: absolute !important;
+}
+
+.reveal .slide-background-content {
+  background-image: url(../../../../../logo_inv.png);
+  background-position: right 20px bottom 20px !important;
+  background-size: 25%;
+}
+
+.print-pdf .reveal .slide-background-content {
+  background-image: url(../../../../../logo_inv.png);
+  background-position: right 10px bottom 5px !important;
+  background-size: 25%;
+}
+
 #title-slide {
     text-align: left;
   
     .date {
-      position: fixed !important;
+      position: absolute !important;
       top: 76px !important;
       left: 860px !important;
       font-weight: bold !important;
     }
 
     .quarto-title-authors {
-      position: fixed !important;
+      position: absolute !important;
       top: 156px !important;
       left: 860px !important;
     

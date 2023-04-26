@@ -11,10 +11,10 @@ format:
   revealjs:
     toc: true
     toc-depth: 1
-    logo: logo_inv.png
     theme: [default, custom.scss]
     slide-number: true
     code-line-numbers: false
+    include-after-body: "footer.html"
 title-slide-attributes:
   data-background-color: black
   data-background-image: tt_title_bg.png
@@ -24,6 +24,18 @@ title-slide-attributes:
 ## About Me
 
 ![I did (PhD) weird DNA simulations, (2019-2020) weird protein simulations, and (2021-now) weird electrode-electrolyte simulations. Spot the pattern! Find out more at my (very poorly maintained) [website](https://srtee.github.io).](my_work.png)
+
+## The People I Work With
+
+::: {layout="[24,12,10]"}
+
+![Prof Debra Bernhardt and the Bernhardt Group](Bernhardt_Group.jpeg)
+
+![The Turing Way](LogoDetailWithText.jpg)
+
+![Research Software Engineers Au-NZ](RSE_AUNZ_logo.png)
+
+:::
 
 # Introduction: LAMMPS as a Community MD Code
 
@@ -340,9 +352,13 @@ User had an idea for a complicated compute to be used in evaluating a potential,
 
 ## Deep Thought: Programming as Theory-Building
 
-> Programming isn't about writing the code; it's about **understanding the problem and expressing that understanding through code**.
+::: {.smaller}
+
+> Programming isn't about writing the code; it's about **understanding the problem and expressing that understanding through code**.  (emphasis added)
 >
-> ... Why does having a theory of the program matter? Because this enables rapid and effective modification of the program to respond to changing requirements without piling up technical debt or hacks.
+> ... Why does having a theory of the program matter? Because this enables rapid and effective modification of the program to respond to changing requirements without piling up technical debt or hacks. ([C J Silverio](https://blog.ceejbot.com/posts/programming-as-theory-building/)), ([Peter Naur](https://gist.github.com/onlurking/fc5c81d18cfce9ff81bc968a7f342fb1))
+
+:::
 
 ![Diagram of "neighbor-listing", a fundamental molecular dynamics operation and a frequent confuser of LAMMPS coders, from [@thompson2022]](neighlisting.jpg)
 
