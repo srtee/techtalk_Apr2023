@@ -47,13 +47,13 @@ $presentation-font-size-root: 30px !default;
 }
 
 .reveal .slide-background-content {
-  background-image: url(../../../../../logo_inv.png);
+  background-image: url(/logo_inv.png);
   background-position: right 20px bottom 20px !important;
   background-size: 25%;
 }
 
 .print-pdf .reveal .slide-background-content {
-  background-image: url(../../../../../logo_inv.png);
+  background-image: url(/logo_inv.png);
   background-position: right 10px bottom 5px !important;
   background-size: 25%;
 }
