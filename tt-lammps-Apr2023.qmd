@@ -7,6 +7,7 @@ date: 26 April 2023
 date-format: "D MMM YYYY"
 bibliography: refs.bib
 footer: "DOI: 10.5281/zenodo.7857573"
+logo: "logo_inv.png"
 format:
   revealjs:
     toc: true
@@ -19,6 +20,7 @@ title-slide-attributes:
   data-background-color: black
   data-background-image: tt_title_bg.png
   data-background-size: contain
+  data-background-position: center center
 ---
 
 ## About Me

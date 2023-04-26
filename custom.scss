@@ -13,13 +13,7 @@ $presentation-font-size-root: 30px !default;
 
 /*-- scss:rules --*/
 .reveal .slide-logo {
-    height: 100px !important;
-    max-height: unset !important;
-    max-width: 50vw !important;
-}
-
-.reveal .quarto-title-block .slide-logo {
-    display: none;
+   display: none !important;
 }
 
 .reveal .smaller {
@@ -47,13 +41,13 @@ $presentation-font-size-root: 30px !default;
 }
 
 .reveal .slide-background-content {
-  background-image: url(/logo_inv.png);
-  background-position: right 20px bottom 20px !important;
-  background-size: 25%;
+  background-image: url("/techtalk_Apr2023/logo_inv.png");
+  background-position: right 20px bottom 20px;
+  background-size: 20%;
 }
 
 .print-pdf .reveal .slide-background-content {
-  background-image: url(/logo_inv.png);
+  background-image: url("/techtalk_Apr2023/logo_inv.png");
   background-position: right 10px bottom 5px !important;
   background-size: 25%;
 }
